@@ -97,7 +97,7 @@ switch (ENVIRONMENT)
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
  */
-	$system_path = 'system';
+	$system_path = '/var/www/localhost/htdocs/';
 
 /*
  *---------------------------------------------------------------
@@ -211,12 +211,12 @@ switch (ENVIRONMENT)
 	}
 
 	// Is the system path correct?
-	// if ( ! is_dir($system_path))
-	// {
-	// 	header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-	// 	echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
-	// 	exit(3); // EXIT_CONFIG
-	// }
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
 
 /*
  * -------------------------------------------------------------------
